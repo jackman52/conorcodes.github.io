@@ -1,5 +1,5 @@
 window.onload = function() {
-var size = 512;
+var size = $("#myCanvas").width();
 var SVGstr;
 
 //trying to figure out pasting svgs, not working
@@ -139,15 +139,13 @@ tool.onMouseDrag = function onMouseDrag(event) {
     }
 };
 
-
 ///THIS IS THREE JS STUFF////
 
 
 var materials = [];
 var textures = [];
-var width = window.innerWidth;
-var height = window.innerHeight / 2;
-
+var width = $("#threejs").width();
+var height = $("#threejs").width()/1.875;
 
 
 var camera, scene, renderer, geometry, material, mesh;
@@ -159,13 +157,20 @@ function init() {
 
     scene = new THREE.Scene();
 
-    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
+    camera = new THREE.PerspectiveCamera(50, width / height, 1, 10000);
     camera.position.z = 500;
     scene.add(camera);
-    var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-//scene.add( light );
+    var light = new THREE.AmbientLight( 0xffeedd ); // soft white light
+    scene.add( light );
 var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 				directionalLight.position.set( 0, 0, 1 );
+				scene.add( directionalLight );
+var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+directionalLight.position.set( 0, 0, -1 );
+scene.add( directionalLight );
+
+var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight.position.set( 0, 1, 0);
 				scene.add( directionalLight );
 
     geometry = new THREE.BoxGeometry(size, size, size);
@@ -206,13 +211,13 @@ var loader = new THREE.OBJLoader();
 
 loader.load( 'obj/last.obj', function ( object ) {
 
-    var material = new THREE.MeshBasicMaterial( { map: texture, transparency:false, opacity:1.0, color:0xFF0000} );
+    var material = new THREE.MeshPhongMaterial( { map: texture, transparency:false, side:THREE.DoubleSide, opacity:1.0} );
 
     object.traverse( function ( child ) {
 
         if ( child instanceof THREE.Mesh ) {
 
-            child.material = thematerial;
+            child.material = material;
             console.log('assigned the material');
 
         }
@@ -225,10 +230,10 @@ loader.load( 'obj/last.obj', function ( object ) {
     console.log('added mesh');
     var bBox = new THREE.Box3().setFromObject(object);
     console.log('bbox is: ' + bBox);
-    var height = bBox.size().y;
-        console.log('height is: ' + height);
+    var bheight = bBox.size().y;
+        console.log('height is: ' + bheight);
 
-    var dist = height / (2 * Math.tan(50 * Math.PI / 360));
+    var dist = bheight / (2 * Math.tan(50 * Math.PI / 360));
             console.log('dist is: ' + dist);
 
     var pos = object.position;
@@ -239,14 +244,14 @@ loader.load( 'obj/last.obj', function ( object ) {
 } );
 
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer = new THREE.WebGLRenderer({alpha: true});
+    renderer.setSize(width, height);
 
-    document.body.appendChild(renderer.domElement);
+    $('#threejs').append(renderer.domElement);
 
 }
 
-var controls	= new THREE.OrbitControls(camera)
+var controls	= new THREE.OrbitControls(camera,renderer.domElement)
 
 function animate() {
 

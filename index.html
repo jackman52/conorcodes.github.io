@@ -6,11 +6,30 @@
 	<script type="text/javascript" src="js/OBJLoader.js"></script>
 	<script type="text/javascript" src='js/OrbitControls.js'></script>
 	<script type="text/javascript" src="js/myscript.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+	
     </head>
-    <body></body>
+    <!--<body>!-->
     <input type="file" id="collection" multiple /><br/>
-    <div>Drag shapes around in this box, view on the 3D model below. Load an image by double clicking a shape.(in the future this image will be clipped by the shape).</div>
-    <div id="hidethis" style="display:none">
+    <div class="container bg-primary">
+	<header class="hero-unit bg-primary">
+          <h1>Hi, I'm Shelly.</h1>
+        </header>
+	<div class="row no-gutters">
+	    <div id="threejs" class="col-sm-6 col-md-6 col-lg-6"></div>
+	    <div id="paperdiv" class="col-sm-6 col-md-6 col-lg-6">
+		<canvas id="myCanvas" hidpi="on" style="border: 2px solid black"></canvas>
+	    </div>
+	</div>
+	<div class="bg-primary">
+	    <h2>Drag shapes around in this box, view on the 3D model below. Load an image by double clicking a shape.(in the future this image will be clipped by the shape).</h2>
+	</div>
+    </div>
+    </div>
+    <!--</body>!-->
+       <div id="hidethis" style="display:none">
                 <svg version="1.1" id="shell" xmlns:ev="http://www.w3.org/2001/xml-events"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="768 -768 2048 2048"
 	 enable-background="new 768 -768 2048 2048" xml:space="preserve">
@@ -80,6 +99,4 @@
 </svg>
 
     </div>
-    <canvas id="myCanvas" hidpi="on"></canvas>
-    </body>
 </html>
