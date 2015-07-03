@@ -178,57 +178,7 @@ var light    = new THREE.SpotLight( 0xFFAA88, 2 );
     light.position.set(-15, 10, 4);
     scene.add( light );
 
-    // plane
-     var planeFragmentShader = [
 
-            "uniform vec3 diffuse;",
-            "uniform float opacity;",
-
-            THREE.ShaderChunk[ "color_pars_fragment" ],
-            THREE.ShaderChunk[ "map_pars_fragment" ],
-            THREE.ShaderChunk[ "lightmap_pars_fragment" ],
-            THREE.ShaderChunk[ "envmap_pars_fragment" ],
-            THREE.ShaderChunk[ "fog_pars_fragment" ],
-            THREE.ShaderChunk[ "shadowmap_pars_fragment" ],
-            THREE.ShaderChunk[ "specularmap_pars_fragment" ],
-
-            "void main() {",
-
-                "gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );",
-
-                THREE.ShaderChunk[ "map_fragment" ],
-                THREE.ShaderChunk[ "alphatest_fragment" ],
-                THREE.ShaderChunk[ "specularmap_fragment" ],
-                THREE.ShaderChunk[ "lightmap_fragment" ],
-                THREE.ShaderChunk[ "color_fragment" ],
-                THREE.ShaderChunk[ "envmap_fragment" ],
-                THREE.ShaderChunk[ "shadowmap_fragment" ],
-                THREE.ShaderChunk[ "linear_to_gamma_fragment" ],
-                THREE.ShaderChunk[ "fog_fragment" ],
-
-                "gl_FragColor = vec4( 0.0, 0.0, 0.0, 1.0 - shadowColor.x );",
-
-            "}"
-
-        ].join("\n");
-
-        var planeMaterial = new THREE.ShaderMaterial({
-            uniforms: THREE.ShaderLib['basic'].uniforms,
-            vertexShader: THREE.ShaderLib['basic'].vertexShader,
-            fragmentShader: planeFragmentShader,
-            color: 0x0000FF
-        });
-    var geometry    = new THREE.PlaneGeometry( 50, 5, 50 );
-    var material    = new THREE.MeshBasicMaterial({
-        opacity: 0.5,
-        transparent: true
-    });
-    var mesh= new THREE.Mesh( geometry, planeMaterial );
-    mesh.scale.multiplyScalar(3);
-    mesh.castShadow        = false;
-    mesh.receiveShadow    = true;
-    mesh.position.z        = -2;
-    scene.add( mesh );
     // model
     var onProgress = function ( xhr ) {
 					if ( xhr.lengthComputable ) {
