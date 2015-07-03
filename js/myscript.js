@@ -221,9 +221,9 @@ var light    = new THREE.SpotLight( 0xFFAA88, 2 );
     var geometry    = new THREE.PlaneGeometry( 50, 5, 50 );
     var material    = new THREE.MeshBasicMaterial({
         opacity: 0.5,
-        transparent: false
+        transparent: true
     });
-    var mesh        = new THREE.Mesh( geometry, planeMaterial );
+    var mesh= new THREE.Mesh( geometry, planeMaterial );
     mesh.scale.multiplyScalar(3);
     mesh.castShadow        = false;
     mesh.receiveShadow    = true;
