@@ -169,16 +169,13 @@ var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 directionalLight.position.set( 0, 0, -1 );
 scene.add( directionalLight );
 
-var light    = new THREE.SpotLight( 0xFFAA88, 2 );
-    light.position.set(0, 2, 0);
-    light.shadowCameraNear        = 0.01;        
-    light.castShadow        = true;
-    light.shadowDarkness        = 0.5;
-    light.shadowCameraVisible    = true;
-    light.position.set(-15, 10, 4);
-    scene.add( light );
 
-
+    var mesh= new THREE.Mesh( geometry, planeMaterial );
+    mesh.scale.multiplyScalar(3);
+    mesh.castShadow        = false;
+    mesh.receiveShadow    = true;
+    mesh.position.z        = -2;
+    scene.add( mesh );
     // model
     var onProgress = function ( xhr ) {
 					if ( xhr.lengthComputable ) {
