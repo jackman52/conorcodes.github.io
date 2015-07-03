@@ -169,9 +169,14 @@ var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 directionalLight.position.set( 0, 0, -1 );
 scene.add( directionalLight );
 
-var directionalLight = new THREE.DirectionalLight( 0xffeedd );
-				directionalLight.position.set( 0, 1, 0);
-				scene.add( directionalLight );
+var light    = new THREE.SpotLight( 0xFFAA88, 2 );
+    light.position.set(0, 2, 0);
+    light.shadowCameraNear        = 0.01;        
+    light.castShadow        = true;
+    light.shadowDarkness        = 0.5;
+    light.shadowCameraVisible    = true;
+    light.position.set(-15, 10, 4);
+    scene.add( light );
 
     // plane
      var planeFragmentShader = [
