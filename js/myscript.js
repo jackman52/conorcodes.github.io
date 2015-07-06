@@ -144,10 +144,9 @@ tool.onMouseDrag = function onMouseDrag(event) {
 
 var materials = [];
 var textures = [];
-//var width = $("#threejs").width();
-//var height = $("#threejs").width();
-var width =size;
-var height=size;
+var width = $("#threejs").width();
+var height = $("#threejs").width();
+
 
 var camera, scene, renderer, geometry, material, mesh;
 
