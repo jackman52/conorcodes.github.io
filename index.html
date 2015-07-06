@@ -12,19 +12,31 @@
 	
     </head>
     <!--<body>!-->
-    <input type="file" id="collection" multiple /><br/>
+    <input type="file" id="collection" style="display:none" multiple /><br/>
     <div class="container bg-primary">
 	<header class="hero-unit bg-primary">
-          <h1>Hi, I'm Shelly.</h1>
+          <h1>Hi, I'm _____.</h1>
         </header>
 	<div class="row no-gutters">
-	    <div id="threejs" class="col-sm-6 col-md-6 col-lg-6"></div>
+	    <div id="threejs" class="col-sm-6 col-md-6 col-lg-6" style="border: 2px solid white"></div>
 	    <div id="paperdiv" class="col-sm-6 col-md-6 col-lg-6">
-		<canvas id="myCanvas" hidpi="on" style="border: 2px solid black"></canvas>
+		<canvas id="myCanvas" hidpi="on" style="border: 2px solid white"></canvas>
 	    </div>
 	</div>
-	<div class="bg-primary">
-	    <h2>Drag shapes around in this box, view on the 3D model below. Load an image by double clicking a shape.(in the future this image will be clipped by the shape).</h2>
+	<div class="col-sm-6 col-md-6 col-lg-6 bg-primary">
+	    <h3>3D Controls</h3>
+	    	<ul class="list-unstyled">
+		<li>Rotate: Left Click + Drag</li>
+		<li>Zoom: Scroll</li>
+		<li>Pan: Two finger/middle click and drag</li>
+		</ul>
+	</div>
+	<div class="col-sm-6 col-md-6 col-lg-6 bg-primary">
+	    <h3>2D Controls</h3>
+	    <ul class="list-unstyled">
+		<li>Move: Click and Drag</li>
+		<li>Load Image: Double Click a Shape</li>
+	  </ul>
 	</div>
     </div>
     </div>

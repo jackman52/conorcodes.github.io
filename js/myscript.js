@@ -1,5 +1,5 @@
 window.onload = function() {
-var size = $("#myCanvas").width();
+var size = $("#paperdiv").width();
 var SVGstr;
 
 //trying to figure out pasting svgs, not working
@@ -144,9 +144,9 @@ tool.onMouseDrag = function onMouseDrag(event) {
 
 var materials = [];
 var textures = [];
-var width = $("#threejs").width();
-var height = $("#threejs").width()/1.875;
-
+//var width = $("#threejs").width();
+//var height = $("#threejs").width();
+var width = height = size;
 
 var camera, scene, renderer, geometry, material, mesh;
 
