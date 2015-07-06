@@ -146,9 +146,8 @@ var materials = [];
 var textures = [];
 //var width = $("#threejs").width();
 //var height = $("#threejs").width();
-var width = size;
-var height = size;
-
+var width =size;
+var height=size;
 
 var camera, scene, renderer, geometry, material, mesh;
 
@@ -171,13 +170,24 @@ var directionalLight = new THREE.DirectionalLight( 0xffeedd );
 directionalLight.position.set( 0, 0, -1 );
 scene.add( directionalLight );
 
+var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight.position.set( 0, 1, 0);
+				scene.add( directionalLight );
 
-    var mesh= new THREE.Mesh( geometry, planeMaterial );
-    mesh.scale.multiplyScalar(3);
-    mesh.castShadow        = false;
-    mesh.receiveShadow    = true;
-    mesh.position.z        = -2;
-    scene.add( mesh );
+    geometry = new THREE.BoxGeometry(size, size, size);
+    var texture = new THREE.Texture(canvas);
+    textures.push(texture);
+
+    var thematerial = new THREE.MeshLambertMaterial({
+        map: texture
+    });
+    materials.push(material);
+
+
+
+    mesh = new THREE.Mesh(geometry, thematerial);
+    //scene.add(mesh);
+    
     // model
     var onProgress = function ( xhr ) {
 					if ( xhr.lengthComputable ) {
