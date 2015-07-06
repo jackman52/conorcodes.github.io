@@ -146,7 +146,7 @@ var materials = [];
 var textures = [];
 //var width = $("#threejs").width();
 //var height = $("#threejs").width();
-var width = height = size;
+var width,height = size;
 
 var camera, scene, renderer, geometry, material, mesh;
 
